@@ -74,7 +74,7 @@
         .gif-container img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* Changed to contain to ensure full image is visible */
             border-radius: 15px;
         }
 
@@ -147,7 +147,7 @@
 
     <div class="container">
         <div class="gif-container">
-            <img id="main-image" src="us.png" alt="Cute Bubu Dudu" onerror="this.src='https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3h5cnd4YXBoMnF6aW94Y2V5bHk2eG14bmw5eW93bnB5b3F5aW94ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif'">
+            <img id="main-image" src="bubu-dudu-sseeyall.gif" alt="Cute Bubu Dudu" onerror="this.src='https://media.tenor.com/t1106y3M6qAAAAAj/mocha-bear-hearts.gif'">
         </div>
         
         <h1 id="question">Will you be my Valentine?</h1>
@@ -190,7 +190,6 @@
             const btnHeight = btnRect.height;
 
             // Calculate random position but keep it within safety margins
-            // so it doesn't go off screen
             const randomX = Math.random() * (viewportWidth - btnWidth - 50);
             const randomY = Math.random() * (viewportHeight - btnHeight - 50);
 
@@ -216,9 +215,11 @@
             
             // Hide the No button
             noBtn.style.display = 'none';
+
+            // NEW: Hide the Yes button
+            document.querySelector('.yes-btn').style.display = 'none';
             
-            // Change image to a happy one (You can add a second image named 'happy.png')
-            // Otherwise it defaults to a cute excited gif
+            // Change image to a happy one 
             mainImage.src = "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
             
             // Trigger Confetti
@@ -280,7 +281,7 @@
         }
 
         function startConfetti() {
-            // Create 100 particles
+            // Create 150 particles
             for (let i = 0; i < 150; i++) {
                 particles.push(new Particle());
             }
